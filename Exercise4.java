@@ -11,6 +11,7 @@ import java.util.*;
 
 public class Exercise4 implements Ex4 {
 	private final Graph<Nodes.GraphNode> graph;
+	private final ListGraph<Nodes.GraphNode> listGraph = new ListGraph<Nodes.GraphNode>();
 
 	public Exercise4(Graph<Nodes.GraphNode> graph) {
 		this.graph = graph;
@@ -31,21 +32,27 @@ public class Exercise4 implements Ex4 {
 			int counter = -1;
 
 			line = in.readLine();
-			var nodes= line.split(";");
-			for(int i = 0; i < (nodes.length/3); i++) {
+			var txtNodes= line.split(";");
+			for(int i = 0; i < (txtNodes.length/3); i++) {
 				counter++;
-				name = nodes[counter];
+				name = txtNodes[counter];
 				counter++;
-				x = Double.parseDouble(nodes[counter]);
+				x = Double.parseDouble(txtNodes[counter]);
 				counter++;
-				y = Double.parseDouble(nodes[counter]);
-				Nodes.LocationNode node = new Nodes.LocationNode(name, x, y);
-				graph.add(node);
+				y = Double.parseDouble(txtNodes[counter]);
+				listGraph.add(new Nodes.LocationNode(name, x, y));
 			}
+
+			Set<Nodes.GraphNode> nodes = listGraph.getNodes();
+
 
 			while((line = in.readLine()) != null) {
 				var edge= line.split(";");
-
+				name = edge[1];
+				destination = edge[1];
+				connection = edge[2];
+				weight = Integer.parseInt(edge[3]);
+				listGraph.connect();
 			}
 
 			/*en inledande lång rad med semikolonseparerade uppgifter om noder, och därefter
@@ -64,27 +71,7 @@ public class Exercise4 implements Ex4 {
 			Oslo;Stockholm;Train;3
 			Warszawa;Stockholm;Airplane;2*/
 
-			/*String title = "";
-			String artist = "";
-			int year = 0;
-			int numberOfRecords = Integer.parseInt(in.readLine());
-			int numberOfGenre = 0;
-
-			for (int i = 0; i < numberOfRecords; i++) {
-				line = in.readLine();
-				var artistTitleYear= line.split(";");
-				artist = artistTitleYear[0];
-				title = artistTitleYear[1];
-				year = Integer.parseInt(artistTitleYear[2]);
-				numberOfGenre = Integer.parseInt(in.readLine());
-				Set<String> genre = new HashSet<>(numberOfGenre);
-
-				for (int n = 0; n < numberOfGenre; n++) {
-					genre.add(in.readLine());
-				}
-
-				recordings.add(new Recording(title, artist, year, genre));
-			}*/
+			/*recordings.add(new Recording(title, artist, year, genre));*/
 			in.close();
 		} catch (FileNotFoundException e) {
 			throw new FileNotFoundException();

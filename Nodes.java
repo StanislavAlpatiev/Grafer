@@ -1,3 +1,7 @@
+// PROG2 VT2021, Övning 4
+// Grupp 033
+// Viggo Asklöf vias2878
+// Stanislav Alpatiev stanl5991
 
 public class Nodes {
 	interface GraphNode {

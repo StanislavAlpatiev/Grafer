@@ -1,9 +1,14 @@
+// PROG2 VT2021, Övning 4
+// Grupp 033
+// Viggo Asklöf vias2878
+// Stanislav Alpatiev stanl5991
 
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public interface Ex4 {
 
-	void loadLocationGraph(String filename);
+	void loadLocationGraph(String filename) throws FileNotFoundException;
 
 	default SortedMap<Integer, SortedSet<Nodes.RecordNode>> optionalGetAlsoLiked(Nodes.RecordNode item) {
 		return null;
